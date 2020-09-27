@@ -1,0 +1,206 @@
+#include <iostream>
+using namespace std;
+class data
+{
+private:
+	 string name;
+	 char bg;
+	 string address;
+	 string dob;
+	 string cldiv;
+	 string lic;
+	 static int c;
+	 int roll;
+	 long int phone;
+public:
+	data();
+	static int getcount();
+	void getdata();
+	void show();
+	data(data *obj);
+	data(int roll,long int phone,string name,string address,string dob,string cldiv, string lic);
+	~data();
+};
+  int data::c=0;
+  data::data(data *obj)
+  {
+      cout<<"Copy constructor implemented"<<endl;
+  }
+  data::~data()
+  {
+	  cout<<"Destructor called \n";
+  }
+ void data::getdata()
+ {
+	 	 cout<<"Enter roll number \n";
+	 	 cin>>roll;
+	 	 cout<<"Enter telephone number \n";
+	 	 cin>>phone;
+	 	 cout<<"Enter Name \n";
+		 ws(cin);
+	 	 cin>>name;
+		 cout<<"Enter address \n";
+		 ws(cin);
+		 cin>>address;
+		 cout<<"Enter D.O.B \n";
+		 cin>>dob;
+		 cout<<"Enter Class and Division\n";
+		 ws(cin);
+		 cin>>cldiv;
+		 cout<<"Enter license number \n";
+		 cin>>lic;
+ }
+ void data::show()
+ {
+	 cout<<"Name :"<<name<<endl;
+	 cout<<"Roll Number :"<<roll<<endl;
+	 cout<<"Telephone Number :"<<phone<<endl;
+	 cout<<"Address :"<<address<<endl;
+ 	 cout<<"Date of birth :"<<dob<<endl;
+	 cout<<"Class and division: "<<cldiv<<endl;
+	 cout<<"License number :"<<lic<<endl;
+ }
+ data::data(int roll,long int phone,string name,string address,string dob,string cldiv,string lic)
+ {
+	 cout<<"Parameterized Constructor"<<endl;
+	 c++;
+	 this->roll=roll;
+	 this->phone=phone;
+	 this->name=name;
+	 this->address=address;
+ 	 this->dob=dob;
+	 this->cldiv=cldiv;
+	 this->lic=lic;
+ }
+ data::data()
+ {
+	 roll=0;
+	 phone=0;
+	 name="Name";
+	 address="Address";
+	 dob="DOB";
+	 cldiv="Class and Division";
+	 lic="License no.";
+	 cout<<"Default Constructor"<<endl;
+	 c++;
+ }
+  int data::getcount()
+ {
+	 return c;
+ }
+int main()
+ {
+	int num;
+	data *d1= new data();
+	d1->show();
+	delete d1;
+	data *d2=new data(23,9822794182,"Dhruvatara","Kalyani Nagar","22.02.97","SE A","MSIN92U");
+	d2->show();
+	data *d3=new data(d2);
+	d3->show();
+	delete d2;
+	cout<<"Enter size of database";
+	cin>>num;
+	data dx[num];
+	for(int i=0;i<num;i++)
+	{
+		dx[i].getdata();
+	}
+	for(int i=0;i<num;i++)
+		{
+			dx[i].show();
+		}
+	cout<<"Number of constructor calls and total number of objects:"<<data::getcount()<<endl;
+	return 0;
+}
+/* Output:
+Default Constructor                                                                                                           
+Name :Name                                                                                                                    
+Roll Number :0                                                                                                                
+Telephone Number :0                                                                                                           
+Address :Address                                                                                                              
+Date of birth :DOB                                                                                                            
+Class and division: Class and Division                                                                                        
+License number :License no.                                                                                                   
+Destructor called                                                                                                             
+Parameterized Constructor                                                                                                     
+Name :Dhruvatara                                                                                                              
+Roll Number :23                                                                                                               
+Telephone Number :9822794182                                                                                                  
+Address :Kalyani Nagar                                                                                                        
+Date of birth :22.02.97                                                                                                       
+Class and division: SE A                                                                                                      
+License number :MSIN92U                                                                                                       
+Copy constructor implemented                                                                                                  
+Name :                                                                                                                        
+Roll Number :0                                                                                                                
+Telephone Number :0                                                                                                           
+Address :                                                                                                                     
+Date of birth : 
+Class and division:                                                                                                           
+License number :                                                                                                              
+Destructor called                                                                                                             
+Enter size of database2                                                                                                       
+Default Constructor                                                                                                           
+Default Constructor                                                                                                           
+Enter roll number                                                                                                             
+2                                                                                                                             
+Enter telephone number                                                                                                        
+6567                                                                                                                          
+Enter Name                                                                                                                    
+rahul                                                                                                                         
+Enter address                                                                                                                 
+savedi                                                                                                                        
+Enter D.O.B                                                                                                                   
+01062000                                                                                                                      
+Enter Class and Division                                                                                                      
+SE COMP A                                                                                                                     
+Enter license number                                                                                                          
+Enter roll number                                                                                                             
+Enter telephone number  
+Enter Name                                                                                                                    
+Enter address                                                                                                                 
+Enter D.O.B                                                                                                                   
+Enter Class and Division                                                                                                      
+Enter license number                                                                                                          
+Name :rahul                                                                                                                   
+Roll Number :2                                                                                                                
+Telephone Number :6567                                                                                                        
+Address :savedi                                                                                                               
+Date of birth :01062000                                                                                                       
+Class and division: SE                                                                                                        
+License number :COMP                                                                                                          
+Name :Name                                                                                                                    
+Roll Number :0                                                                                                                
+Telephone Number :0                                                                                                           
+Address :Address                                                                                                              
+Date of birth :DOB                                                                                                            
+Class and division: Class and Division                                                                                        
+License number :License no.                                                                                                   
+Number of constructor calls and total number of objects:4
+Enter Name                                                                                                                    
+Enter address                                                                                                                 
+Enter D.O.B                                                                                                                   
+Enter Class and Division                                                                                                      
+Enter license number                                                                                                          
+Name :rahul                                                                                                                   
+Roll Number :2                                                                                                                
+Telephone Number :6567                                                                                                        
+Address :savedi                                                                                                               
+Date of birth :01062000                                                                                                       
+Class and division: SE                                                                                                        
+License number :COMP                                                                                                          
+Name :Name                                                                                                                    
+Roll Number :0                                                                                                                
+Telephone Number :0                                                                                                           
+Address :Address                                                                                                              
+Date of birth :DOB                                                                                                            
+Class and division: Class and Division                                                                                        
+License number :License no.                                                                                                   
+Number of constructor calls and total number of objects:4
+Destructor called                                                                                                             
+Destructor called                                                                                                             
+                                                                                                                              
+                                                                                                                              
+...Program finished with exit code 0                                                                                          
+Press ENTER to exit console.*/
